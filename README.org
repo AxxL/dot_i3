@@ -1,1 +1,4 @@
-# dot_o3
+* dot_i3
+
+My [[https://i3wm.org/][i3 wm]] configuration.
+
