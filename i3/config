@@ -40,6 +40,11 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
+# bindsym $mod+l focus left
+# bindsym $mod+odiaeresis focus down
+# bindsym $mod+p focus up
+# bindsym $mod+adiaeresis focus right
+
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
@@ -52,16 +57,21 @@ bindsym $mod+odiaeresis focus right
 # bindsym $mod+Right focus right
 
 # move focused window
+# bindsym $mod+Shift+l move left
+# bindsym $mod+Shift+odiaeresis move down
+# bindsym $mod+Shift+p move up
+# bindsym $mod+Shift+adiaeresis move right
+
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+odiaeresis move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# bindsym $mod+Shift+Left move left
+# bindsym $mod+Shift+Down move down
+# bindsym $mod+Shift+Up move up
+# bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -128,16 +138,20 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
+        # bindsym l resize shrink width 10 px or 10 ppt
+        # bindsym odiaeresis resize grow height 10 px or 10 ppt
+        # bindsym p resize shrink height 10 px or 10 ppt
+        # bindsym adiaeresis resize grow width 10 px or 10 ppt
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
         bindsym odiaeresis resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        # bindsym Left resize shrink width 10 px or 10 ppt
+        # bindsym Down resize grow height 10 px or 10 ppt
+        # bindsym Up resize shrink height 10 px or 10 ppt
+        # bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -173,9 +187,9 @@ client.urgent           #C10004 #900000 #ffffff #900000
 # }
 
 # Workspaces
-workspace 9 output LVDS1
-workspace 1 output HDMI2
-workspace 2 output HDMI3
+# workspace 9 output LVDS1
+# workspace 1 output HDMI2
+# workspace 2 output HDMI3
 # workspace 3 output VGA1
 # workspace 4 output VGA1
 
