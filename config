@@ -10,9 +10,10 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $terminal xterm
 
 # default layout: tabbed
-workspace_layout tabbed
+# workspace_layout tabbed
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -27,7 +28,8 @@ font pango:Ubuntu 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -86,6 +88,8 @@ bindsym $mod+f fullscreen
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+bindsym $mod+q layout default
+
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -97,7 +101,13 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+# bindsym $mod+d focus child
+
+# next/previous workspace
+bindsym Mod1+Tab focus right
+# bindsym Mod1+Shift+Tab focus left
+bindsym $mod+Tab workspace back_and_forth
+
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -127,8 +137,6 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -146,7 +154,7 @@ mode "resize" {
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
         bindsym odiaeresis resize grow width 10 px or 10 ppt
-
+        
         # same bindings, but for the arrow keys
         # bindsym Left resize shrink width 10 px or 10 ppt
         # bindsym Down resize grow height 10 px or 10 ppt
@@ -205,6 +213,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 #
 exec --no-startup-id xsetroot -solid "#1b1b1b"
 
+
+
 #
 # Lock and Suspend and Exit
 # uses i3exit.sh
@@ -212,20 +222,31 @@ exec --no-startup-id xsetroot -solid "#1b1b1b"
 #
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit.sh lock, mode "default"
-    bindsym e exec --no-startup-id i3exit.sh logout, mode "default"
-    bindsym s exec --no-startup-id i3exit.sh suspend, mode "default"
-    bindsym h exec --no-startup-id i3exit.sh hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit.sh reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id ~/.i3/i3exit.sh lock, mode "default"
+    bindsym e exec --no-startup-id ~/.i3/i3exit.sh logout, mode "default"
+    bindsym s exec --no-startup-id ~/.i3/i3exit.sh suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.i3/i3exit.sh hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.i3/i3exit.sh reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/.i3/i3exit.sh shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+Delete mode "$mode_system"
+bindsym $mod+Shift+e mode "$mode_system"
+
+# exit i3 (logs you out of your X session)
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
 
 #
 # Network Manager Applet
 #
 exec --no-startup-id nm-applet
+
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# By default windows has 1 pixel border, so it’s difficult to resize them
+# with mouse. With this option, you can move windows with modifier + left
+# click and resize with modifier + right click.
