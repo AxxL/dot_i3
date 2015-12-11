@@ -105,7 +105,7 @@ bindsym $mod+a focus parent
 
 # next/previous workspace
 bindsym Mod1+Tab focus right
-# bindsym Mod1+Shift+Tab focus left
+bindsym Mod1+Shift+Tab focus left
 bindsym $mod+Tab workspace back_and_forth
 
 
