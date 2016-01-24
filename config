@@ -110,9 +110,9 @@ bindsym $mod+Tab workspace back_and_forth
 
 # definition of workspace names and icons
 # https://github.com/FortAwesome/Font-Awesome/releases into ~/.fonts
-set $workspace1 "1 "
-set $workspace2 "2 "
-set $workspace3 "3 "
+set $workspace1 "1 "
+set $workspace2 "2 "
+set $workspace3 "3 "
 set $workspace4 "4 "
 set $workspace5 "5 "
 set $workspace6 "6 "
