@@ -211,6 +211,7 @@ client.urgent           #C10004 #900000 #ffffff #900000
 workspace $workspace9 output LVDS1
 workspace $workspace1 output HDMI2
 workspace $workspace2 output HDMI3
+
 # workspace $workspace3 output VGA1
 # workspace $workspace4 output VGA1
 
@@ -275,3 +276,8 @@ assign [class="Spotify"] $workspace10
 # Autostart
 # exec calc
 # exec_always feh --bg-fill /home/axel/Bilder/Sulphur-Aeon-Gateway-To-The-Antisphere-gatefold-double-vinyl-lavish-edition_2485-1.jpg
+
+# Autolock
+# bindsym $mod+l exec "i3lock -c 1b1b1b"
+exec xautolock -time 10 -locker 'i3lock -c 1b1b1b' &
+
