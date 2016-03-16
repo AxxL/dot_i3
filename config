@@ -28,8 +28,8 @@ font pango:Ubuntu 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-# bindsym $mod+Return exec xterm
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -270,7 +270,9 @@ floating_modifier $mod
 # https://community.spotify.com/t5/Help-Desktop-Linux-Windows-Web/Spotify-linux-preview-troubles-in-i3/td-p/596494
 #
 # for_window [class="Spotify"] floating enable
-assign [class="Spotify"] $workspace10
+# assign [class="Spotify"] $workspace10
+for_window [class="Spotify"] move to workspace $workspace10
+
 
 
 # Autostart
