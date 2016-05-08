@@ -185,7 +185,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status -c ~/.i3/i3status.conf
+        status_command i3status -c ~/.config/i3/i3status.conf
         # status_command i3blocks -c ~/.i3/i3blocks.conf
 }
 
@@ -218,8 +218,8 @@ workspace $workspace2 output HDMI3
 #
 # Volume Control
 #
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 -- +2% && killall -SIGUSR1 i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -- -2% && killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% && killall -SIGUSR1 i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 #
@@ -236,12 +236,12 @@ exec --no-startup-id xsetroot -solid "#1b1b1b"
 #
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/.i3/i3exit.sh lock, mode "default"
-    bindsym e exec --no-startup-id ~/.i3/i3exit.sh logout, mode "default"
-    bindsym s exec --no-startup-id ~/.i3/i3exit.sh suspend, mode "default"
-    bindsym h exec --no-startup-id ~/.i3/i3exit.sh hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/.i3/i3exit.sh reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id ~/.i3/i3exit.sh shutdown, mode "default"
+    bindsym l exec --no-startup-id ~/.config/i3/i3exit.sh lock, mode "default"
+    bindsym e exec --no-startup-id ~/.config/i3/i3exit.sh logout, mode "default"
+    bindsym s exec --no-startup-id ~/.config/i3/i3exit.sh suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.config/i3/i3exit.sh hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.config/i3/i3exit.sh reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/.config/i3/i3exit.sh shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -251,6 +251,13 @@ bindsym $mod+Shift+e mode "$mode_system"
 
 # exit i3 (logs you out of your X session)
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Scratchpad
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
 
 
 #
@@ -272,7 +279,9 @@ floating_modifier $mod
 # for_window [class="Spotify"] floating enable
 # assign [class="Spotify"] $workspace10
 for_window [class="Spotify"] move to workspace $workspace10
-
+for_window [class="Qjackctl"] move to workspace $workspace10
+for_window [class="Qjackctl"] floating enable
+for_window [class="doublecommander"] floating enable
 
 
 # Autostart
@@ -281,5 +290,5 @@ for_window [class="Spotify"] move to workspace $workspace10
 
 # Autolock
 # bindsym $mod+l exec "i3lock -c 1b1b1b"
-exec xautolock -time 10 -locker 'i3lock -c 1b1b1b' &
+exec --no-startup-id xautolock -time 10 -locker 'i3lock -c 1b1b1b' &
 
