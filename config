@@ -101,7 +101,10 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-# bindsym $mod+d focus child
+bindsym $mod+y focus child
+
+# Focus last floating/tiling container
+bindsym $mod+g focus mode_toggle
 
 # next/previous workspace
 bindsym Mod1+Tab focus right
@@ -286,9 +289,16 @@ for_window [class="doublecommander"] floating enable
 
 # Autostart
 # exec calc
-# exec_always feh --bg-fill /home/axel/Bilder/Sulphur-Aeon-Gateway-To-The-Antisphere-gatefold-double-vinyl-lavish-edition_2485-1.jpg
+# exec_always feh --bg-fill /home/aschaefer/Bilder/Sulphur-Aeon-Gateway-To-The-Antisphere-gatefold-double-vinyl-lavish-edition_2485-1.jpg
 
 # Autolock
 # bindsym $mod+l exec "i3lock -c 1b1b1b"
 exec --no-startup-id xautolock -time 10 -locker 'i3lock -c 1b1b1b' &
 
+# Scratchpad
+# Make the currently focused window a scratchpad
+# bindsym $mod+Shift+minus move scratchpad
+# Show the first scratchpad window
+# bindsym $mod+minus scratchpad show
+# Show the sup-mail scratchpad window, if any.
+# bindsym mod4+s [title="^Sup ::"] scratchpad show
