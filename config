@@ -28,8 +28,8 @@ font pango:Ubuntu 10
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec xterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -40,6 +40,10 @@ bindsym $mod+d exec dmenu_run
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# start rofi
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
+bindsym $mod+Tab exec --no-startup-id rofi -show window
 
 # change focus
 # bindsym $mod+l focus left
@@ -107,9 +111,9 @@ bindsym $mod+y focus child
 bindsym $mod+g focus mode_toggle
 
 # next/previous workspace
-bindsym Mod1+Tab focus right
-bindsym Mod1+Shift+Tab focus left
-bindsym $mod+Tab workspace back_and_forth
+# bindsym Mod1+Tab focus right
+# bindsym Mod1+Shift+Tab focus left
+# bindsym $mod+Tab workspace back_and_forth
 
 # definition of workspace names and icons
 # https://github.com/FortAwesome/Font-Awesome/releases into ~/.fonts
@@ -237,13 +241,13 @@ exec --no-startup-id xsetroot -solid "#1b1b1b"
 # uses i3exit.sh
 # https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout/
 #
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (Shift+r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id ~/.config/i3/i3exit.sh lock, mode "default"
     bindsym e exec --no-startup-id ~/.config/i3/i3exit.sh logout, mode "default"
     bindsym s exec --no-startup-id ~/.config/i3/i3exit.sh suspend, mode "default"
     bindsym h exec --no-startup-id ~/.config/i3/i3exit.sh hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/.config/i3/i3exit.sh reboot, mode "default"
+    bindsym Shift+r exec --no-startup-id ~/.config/i3/i3exit.sh reboot, mode "default"
     bindsym Shift+s exec --no-startup-id ~/.config/i3/i3exit.sh shutdown, mode "default"
 
     # back to normal: Enter or Escape
@@ -261,6 +265,12 @@ bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
+
+
+#
+# Volume Control Tray: pasystray
+#
+exec --no-startup-id pasystray
 
 
 #

@@ -25,7 +25,8 @@ case "$1" in
         lock && systemctl hibernate
         ;;
     reboot)
-        systemctl reboot
+        # systemctl reboot
+        dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true
         ;;
     shutdown)
         # systemctl poweroff
