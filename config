@@ -234,7 +234,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 #
 # Background Image
 #
-exec --no-startup-id xsetroot -solid "#1b1b1b"
+# exec --no-startup-id xsetroot -solid "#1b1b1b"
+exec --no-startup-id hsetroot -solid "#1b1b1b"
 
 #
 # marco compositor
@@ -246,19 +247,22 @@ exec --no-startup-id mate-settings-daemon
 #
 # exec --no-startup-id gnome-keyring-daemon
 
-
 # Sicherheitsdienst
 # GNOME-Schlüsselbunddienst: Sicherheitsdienst
-exec --no-startup-id "/usr/bin/gnome-keyring-daemon --start --components=secrets"
+# exec --no-startup-id "/usr/bin/gnome-keyring-daemon --start --components=secrets"
 
 # SSH-Schlüsselagent
 # GNOME-Schlüsselbunddienst: SSH-Agent
-exec --no-startup-id "/usr/bin/gnome-keyring-daemon --start --components=ssh"
+# exec --no-startup-id "/usr/bin/gnome-keyring-daemon --start --components=ssh"
 
 # Zertifikat-/Schlüsselverwahrung
 # GNOME-Schlüsselbunddienst: PKCS#11-Komponente
-exec --no-startup-id "/usr/bin/gnome-keyring-daemon --start --components=pkcs11"
+# exec --no-startup-id "/usr/bin/gnome-keyring-daemon --start --components=pkcs11"
 
+#
+# Play with compton
+# exec --no-startup-id "compton --backend glx --paint-on-overlay --vsync opengl-swc"
+exec --no-startup-id compton --config ~/.config/compton.conf
 
 
 #
@@ -307,7 +311,6 @@ exec --no-startup-id pasystray
 #
 exec --no-startup-id nm-applet
 
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # By default windows has 1 pixel border, so it’s difficult to resize them
@@ -328,7 +331,7 @@ for_window [class="doublecommander"] floating enable
 
 # Autostart
 # exec calc
-# exec_always feh --bg-fill /home/aschaefer/Bilder/Sulphur-Aeon-Gateway-To-The-Antisphere-gatefold-double-vinyl-lavish-edition_2485-1.jpg
+# exec_always --no-startup-id feh --bg-fill /home/aschaefer/Bilder/Sulphur-Aeon-Gateway-To-The-Antisphere-gatefold-double-vinyl-lavish-edition_2485-1.jpg
 
 # Autolock
 # bindsym $mod+l exec "i3lock -c 1b1b1b"
