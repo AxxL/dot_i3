@@ -240,7 +240,7 @@ exec --no-startup-id hsetroot -solid "#1b1b1b"
 #
 # marco compositor
 #
-exec --no-startup-id mate-settings-daemon
+# exec --no-startup-id mate-settings-daemon
 
 #
 # Passphrases and Co.
@@ -262,8 +262,8 @@ exec --no-startup-id mate-settings-daemon
 #
 # Play with compton
 # exec --no-startup-id "compton --backend glx --paint-on-overlay --vsync opengl-swc"
-exec --no-startup-id compton --config ~/.config/compton.conf
-
+# exec --no-startup-id compton --config ~/.config/compton.conf
+exec --no-startup-id compton --config ~/.config/i3/compton/compton_airblader.conf
 
 #
 # Lock and Suspend and Exit
@@ -328,6 +328,23 @@ for_window [class="Qjackctl"] move to workspace $workspace10
 for_window [class="Qjackctl"] floating enable
 for_window [class="doublecommander"] floating enable
 
+#
+# https://www.reddit.com/r/i3wm/comments/62epdo/how_can_i_launch_dialog_windows_in_floating_mode/
+#
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [title=".*Kopiere.*"] floating enable
+for_window [title=".*Bewege.*"] floating enable
+for_window [title="Unpack.*"] floating enable
+for_window [title="Testing Archive"] floating enable
+for_window [title="Open Database -.*"] floating enable
+for_window [title=".* KeePass Password Safe"] floating enable
+for_window [title="Unlock Login .*"] floating enable
+
 
 # Autostart
 # exec calc
@@ -336,6 +353,9 @@ for_window [class="doublecommander"] floating enable
 # Autolock
 # bindsym $mod+l exec "i3lock -c 1b1b1b"
 exec --no-startup-id xautolock -time 10 -locker 'i3lock -c 1b1b1b' &
+
+# Maus
+exec --no-startup-id xset m 8/0 1
 
 # Scratchpad
 # Make the currently focused window a scratchpad
